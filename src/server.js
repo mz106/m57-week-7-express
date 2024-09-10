@@ -47,13 +47,12 @@ app.post("/books/addbook", async (request, response) => {
   response.send({ message: "success", book: book });
 });
 
-app.get("/books/onebook", (request, response) => {
+// get all the books
+app.get("/books/getallbooks", (request, response) => {
   response.send({ message: "success" });
 });
 
-// get all the books
-
-app.get("/books/allbooks", (request, response) => {
+app.get("/books/onebook", (request, response) => {
   response.send({ message: "success" });
 });
 
