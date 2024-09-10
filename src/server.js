@@ -4,37 +4,20 @@ const app = express();
 
 app.use(express.json());
 
-const fakeDB = [];
-
 app.get("/books/onebook", (request, response) => {
-  const book = {
-    title: "book1",
-    author: "dave",
-    genre: "horror",
-  };
-  response.send({ message: "success", book: book });
+  response.send({ message: "success" });
 });
 
 // get all the books (i.e. fakeDB)
 
 app.get("/books/allbooks", (request, response) => {
-  response.send("hello all books");
+  response.send({ message: "success" });
 });
 
 // post
 
 app.post("/books/addbook", (request, response) => {
-  fakeDB.push(request.body);
-
-  response.send({ message: `${request.body.title} has been added` });
-});
-
-app.get("/movies/onemovie", (request, response) => {
-  response.send("One movie");
-});
-
-app.put("/movies/updatemovie", (request, response) => {
-  response.send("update movie");
+  response.send({ message: "success" });
 });
 
 app.listen(5000, () => {
