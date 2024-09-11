@@ -60,6 +60,13 @@ app.delete("/books/deletebookbytitle", async (request, response) => {
   // put code here
 });
 
+app.put("/books/updatebookauthor", async (request, response) => {
+  // put code here
+  // we will need
+  // 1. filter object (filter by title)
+  // 2. update object (author)
+});
+
 app.get("/books/onebook", (request, response) => {
   response.send({ message: "success" });
 });
