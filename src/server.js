@@ -48,8 +48,10 @@ app.post("/books/addbook", async (request, response) => {
 });
 
 // get all the books
-app.get("/books/getallbooks", (request, response) => {
-  response.send({ message: "success" });
+app.get("/books/getallbooks", async (request, response) => {
+  const books = await Book.find({});
+
+  response.send({ message: "success", books: books });
 });
 
 app.get("/books/onebook", (request, response) => {
