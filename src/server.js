@@ -1,40 +1,74 @@
+require("dotenv").config();
 const express = require("express");
+const mongoose = require("mongoose");
 
 const app = express();
 
 app.use(express.json());
 
-const fakeDB = [];
+// DB connection
 
-app.get("/books/onebook", (request, response) => {
-  const book = {
-    title: "book1",
-    author: "dave",
-    genre: "horror",
-  };
+const connection = async () => {
+  await mongoose.connect(process.env.MONGODB_URI);
+  console.log("DB is working");
+};
+
+connection();
+
+// Book model
+
+const bookSchema = new mongoose.Schema({
+  title: {
+    type: String,
+    required: true,
+    unique: true,
+  },
+  author: {
+    type: String,
+    required: true,
+  },
+  genre: {
+    type: String,
+  },
+});
+
+const Book = mongoose.model("book", bookSchema);
+
+// Routes
+
+// post
+app.post("/books/addbook", async (request, response) => {
+  const book = await Book.create({
+    title: request.body.title,
+    author: request.body.author,
+    genre: request.body.genre,
+  });
+
   response.send({ message: "success", book: book });
 });
 
-// get all the books (i.e. fakeDB)
+// get all the books
+app.get("/books/getallbooks", async (request, response) => {
+  const books = await Book.find({});
 
-app.get("/books/allbooks", (request, response) => {
-  response.send("hello all books");
+  response.send({ message: "success", books: books });
 });
 
-// post
+// delete one book by title
 
-app.post("/books/addbook", (request, response) => {
-  fakeDB.push(request.body);
-
-  response.send({ message: `${request.body.title} has been added` });
+app.delete("/books/deletebookbytitle", async (request, response) => {
+  // put code here
 });
 
-app.get("/movies/onemovie", (request, response) => {
-  response.send("One movie");
+app.put("/books/updatebookauthor", async (request, response) => {
+  // put code here
+  // we will need
+  // 1. filter object (filter by title)
+  // 2. update object (author)
 });
 
-app.put("/movies/updatemovie", (request, response) => {
-  response.send("update movie");
+app.get("/books/onebook", (request, response) => {
+  response.send({ message: "success" });
 });
 
 app.listen(5000, () => {
