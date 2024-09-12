@@ -38,9 +38,9 @@ app.put("/books/updatebookauthor", async (request, response) => {
   // 2. update object (author)
 });
 
-app.get("/books/onebook", (request, response) => {
-  response.send({ message: "success" });
-});
+// app.get("/books/onebook", (request, response) => {
+//   response.send({ message: "success" });
+// });
 
 app.listen(5000, () => {
   console.log("Server is listening on port 5000");
