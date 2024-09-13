@@ -36,4 +36,27 @@ const avenger = {
   friends: ["banner", "cap", "hawkeye"],
 };
 
-console.log(avenger.details.phoneNumbers.landline.workNums.num1);
+// console.log(avenger.details.phoneNumbers.landline.workNums.num1);
+
+//step 2: dynamic objects
+
+// const value1 =
+
+// const awesomeObj = {
+//   name: value1,
+//   age: "27",
+//   isAwesome: true,
+// };
+
+const value1 = true;
+const value2 = 3;
+
+const key1 = "sunroof";
+const key2 = "doors";
+
+const car = {
+  [key1]: value1,
+  [key2]: value2,
+};
+
+console.log(car);

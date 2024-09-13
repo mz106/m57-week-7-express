@@ -1,9 +1,12 @@
 const { Router } = require("express");
 const bookRouter = Router();
 
-const { addBook } = require("./controllers");
+const { addBook, dynamicExample } = require("./controllers");
 
 // post
 bookRouter.post("/books/addbook", addBook);
+
+// dynamic object example
+bookRouter.post("/books/dynamicexample", dynamicExample);
 
 module.exports = bookRouter;

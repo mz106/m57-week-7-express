@@ -10,6 +10,11 @@ const addBook = async (request, response) => {
   response.send({ message: "success", book: book });
 };
 
+const dynamicExample = async (request, response) => {
+  response.send({ message: "success", obj: update });
+};
+
 module.exports = {
   addBook: addBook,
+  dynamicExample: dynamicExample,
 };
